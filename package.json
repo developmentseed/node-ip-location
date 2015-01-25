@@ -1,0 +1,22 @@
+{
+  "name": "node-ip-location",
+  "version": "0.1.0",
+  "dependencies": {
+    "newrelic": "^1.14.5"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "request": "^2.51.0",
+    "should": "^4.6.1",
+    "sinon": "^1.12.2"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "./node_modules/mocha/bin/mocha -R nyan"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
