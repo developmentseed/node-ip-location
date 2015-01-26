@@ -1,11 +1,11 @@
-# node-ip-location [![Build Status](https://travis-ci.org/jflasher/node-ip-location.svg)](https://travis-ci.org/jflasher/node-ip-location)
+# node-ip-location [![Build Status](https://travis-ci.org/developmentseed/node-ip-location.svg)](https://travis-ci.org/developmentseed/node-ip-location)
 
 A small node application to provide an endpoint to get the caller's location. 
 
 ## Overview
 
-I needed a way for a client-side application to get the user's rough location without 
-going through the browser so I came up with this. It will check the incoming 
+We needed a way for a client-side application to get the user's rough location without 
+going through the browser so we came up with this. It will check the incoming 
 request for various parameters to try and come up with an IP address. It'll then 
 call out to the [NetImpact](http://www.netimpact.com/) service to turn that IP 
 into a general area. 
