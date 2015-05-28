@@ -17,7 +17,7 @@ var getLocation = function (ip, callback) {
               apiKey + '&qt=geoip&d=json&q=' + ip;
 
   request.get(url, function (err, response, body) {
-    if (err) { 
+    if (err) {
       return callback(err);
     }
 
@@ -28,8 +28,8 @@ module.exports = getLocation;
 
 http.createServer(function (req, res) {
   if(req.url === '/location') {
-    var ip = req.headers['x-forwarded-for'] || 
-    req.connection.remoteAddress || 
+    var ip = req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 
@@ -47,7 +47,7 @@ http.createServer(function (req, res) {
 
       if (err) {
         console.log(err);
-        return res.end(err);
+        return res.end('{ error: "Error contacting location service." }');
       }
 
       var parsed;
@@ -55,12 +55,12 @@ http.createServer(function (req, res) {
         parsed = JSON.parse(json);
       }
       catch (e) {
-        return res.end('{ error: "Error parsing Address server data." }');
+        return res.end('{ error: "Error parsing address service data." }');
       }
 
       // Check for max connections case
       if (parsed === 'MSG: MAX CONNECTIONS REACHED') {
-        return res.end('{ error: "Ruh roh, over API limit." }'); 
+        return res.end('{ error: "Ruh roh, over API limit." }');
       }
 
       var data = {
@@ -73,6 +73,6 @@ http.createServer(function (req, res) {
     });
   } else {
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('nothing to see here\n');  
+    res.end('nothing to see here\n');
   }
 }).listen(port);
