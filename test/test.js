@@ -13,7 +13,7 @@ describe('Application', function() {
     before(function(done) {
       s = sinon
         .stub(request, 'get')
-        .yields(null, null, null);    
+        .yields(null, null, null);
         done();
     });
 
@@ -39,7 +39,7 @@ describe('Application', function() {
         request.get.called.should.be.equal(true);
         done();
       });
-    }); 
+    });
 
     it('should return data accurately from api', function (done) {
       var data = '[["Washington","District Of Columbia","United States","Comcast Cable Communications Inc.","38.895110","-77.036370","US",""]]';
@@ -50,7 +50,7 @@ describe('Application', function() {
         request.get.called.should.be.equal(true);
         expect(json).to.equal(data);
         done();
-      });    
+      });
     });
   });
 
@@ -61,7 +61,7 @@ describe('Application', function() {
     before(function(done) {
       s = sinon
         .stub(request, 'get')
-        .yields(null, null, null);    
+        .yields(null, null, null);
         done();
     });
 
@@ -83,7 +83,7 @@ describe('Application', function() {
       s.yields(null, null, '<html>d</html>');
       request('http://localhost:5000/location', function (err, res, body) {
         expect(err).to.not.exist();
-        expect(body).to.equal('{ error: "Error parsing Address server data." }');
+        expect(body).to.equal('{ error: "Error parsing address service data." }');
         request.get.called.should.be.equal(true);
         done();
       });
@@ -109,6 +109,6 @@ describe('Application', function() {
         request.get.called.should.be.equal(true);
         done();
       });
-    });  
+    });
   });
 });
